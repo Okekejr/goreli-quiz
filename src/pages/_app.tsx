@@ -2,7 +2,7 @@ import theme from "@/theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import type { AppProps } from "next/app";
 import { WagmiConfig, createConfig, configureChains } from "wagmi";
-import { mainnet, goerli, polygonMumbai } from "wagmi/chains";
+import { mainnet, goerli } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
@@ -10,7 +10,7 @@ import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet, goerli, polygonMumbai],
+  [goerli],
   [
     alchemyProvider({ apiKey: "MbiTuVs5ORjh5d8_Cwg4RBq9T1Mv9qYL" }),
     publicProvider(),

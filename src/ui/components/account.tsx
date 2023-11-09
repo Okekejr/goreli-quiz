@@ -6,6 +6,7 @@ import {
   useNetwork,
   useEnsAvatar,
   useEnsName,
+  useSwitchNetwork,
 } from "wagmi";
 import { truncateAddress } from "@/util/address";
 import { BsChevronRight } from "react-icons/bs";
@@ -19,18 +20,21 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import { QUIZ_TOKEN_ADDRESS } from "@/config/contract";
 
 export const Account: FC = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-  const { address, isConnected } = useAccount();
+  const { address } = useAccount();
   const { data: ensName } = useEnsName({
     address: address,
   });
-  const { data } = useBalance({ address: address });
+
+  const { data } = useBalance({ address: address, token: QUIZ_TOKEN_ADDRESS });
   const { data: ensAvatar } = useEnsAvatar({ name: ensName });
   const { disconnect } = useDisconnect();
   const { chain } = useNetwork();
+  const { switchNetwork } = useSwitchNetwork();
   const trimAddress = truncateAddress(4, address);
 
   const isNetworkSupported = useMemo(() => {
@@ -112,7 +116,7 @@ export const Account: FC = () => {
             p: "0.5rem",
             mt: "1rem",
             mx: "10px",
-            width: "15rem",
+            width: "16rem",
           }}
         >
           <Box
@@ -144,17 +148,33 @@ export const Account: FC = () => {
                   },
                 }}
               >
-                <Typography variant="body2">
-                  {isNetworkSupported ? trimAddress : "Wrong Network"}
-                </Typography>
-                <Box
-                  sx={{
-                    background: isNetworkSupported ? "#48BB78" : "#F56565",
-                    width: "1rem",
-                    height: "1rem",
-                    borderRadius: "50%",
-                  }}
-                />
+                <>
+                  <Typography
+                    variant="body2"
+                    component="button"
+                    border="none"
+                    width={isNetworkSupported ? "5rem" : "7rem"}
+                    disabled={!switchNetwork || chain?.id === 5}
+                    sx={{
+                      "&:hover": {
+                        background: "#E2E8F0",
+                        cursor: isNetworkSupported ? "default" : "pointer",
+                      },
+                      background: "#EDF2F7",
+                    }}
+                    onClick={() => switchNetwork?.(5)}
+                  >
+                    {isNetworkSupported ? trimAddress : "Wrong Network"}
+                  </Typography>
+                  <Box
+                    sx={{
+                      background: isNetworkSupported ? "#48BB78" : "#F56565",
+                      width: "1rem",
+                      height: "1rem",
+                      borderRadius: "50%",
+                    }}
+                  />
+                </>
               </Box>
             </Tooltip>
           </Box>

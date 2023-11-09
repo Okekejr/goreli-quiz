@@ -3,10 +3,13 @@ import React from "react";
 import { WalletSelector } from "./components/wallet-selector";
 import { useAccount } from "wagmi";
 import { Account } from "./components/account";
+import { useMounted } from "@/hooks/useMounted";
 
 export const Navbar = () => {
   const { isConnected } = useAccount();
-  return (
+  const { hasMounted } = useMounted();
+
+  return hasMounted ? (
     <Stack
       justifyContent="space-between"
       direction="row"
@@ -18,5 +21,5 @@ export const Navbar = () => {
       </Typography>
       {isConnected ? <Account /> : <WalletSelector />}
     </Stack>
-  );
+  ) : null;
 };
