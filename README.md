@@ -1,40 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Goreli-Quiz
 
-## Getting Started
+## Description:
 
-First, run the development server:
+> - A Nextjs Web3 app that allows you to connect to metmask and other connectors, once connected it pulls your balance, address and then presents you with a quiz. Each quiz has a timelimit, so selecting an answer or not you will be moved to the next quiz within the allocated timeframe. After the Quiz is completed and submitted you will rewareded with 1 Quiz Token.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### In this project I have:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> - Great UI and seamless connection to metamask, also tooltips to guide you and great user feedback. Enjoy!
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Built With & Requirements
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Next.js
+- Typescript
+- [Wagmi React Hooks for Ethereum](https://wagmi.sh/)
+- [MaterialUI]-(https://mui.com/)
+- [themoviedb API](https://developer.themoviedb.org/reference/intro/getting-started).
+- [$QuizTokenAddress](https://goerli.etherscan.io/address/0x437ef217203452317c3c955cf282b1ee5f6aaf72)
+- [SomeFreeETHGereliFaucet](https://goerlifaucet.com/) - To test
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Live Demo
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Please [click]() for the live demo.
 
-## Learn More
+## Deliveries
 
-To learn more about Next.js, take a look at the following resources:
+> - Home Page:-
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> - Connectors Bar:-
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+> - Profile Card:-
 
-## Deploy on Vercel
+> - Quiz Page:-
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> - Overview Page:-
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+> - Error Handling:-
+
+## 🎉 Getting Started
+
+Make sure you fork it, to make your copy of the repo.
+
+`git clone https://github.com/Okekejr/goreli-quiz.git`
+
+**Install the dependencies (using `npm` or `yarn`**
+
+- Using `npm`: `npm install`
+- Using `yarn`: `yarn`
+
+**Starting project locally**
+
+`npm run start` or `yarn run dev`
+
+## Show your support
+
+Please give a ⭐️ if you like this project!
