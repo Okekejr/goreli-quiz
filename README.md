@@ -22,7 +22,7 @@
 
 ## Live Demo
 
-Please [click]() for the live demo.
+Please [click](goreli-quiz.vercel.app) for the live demo.
 
 ## Deliveries
 
