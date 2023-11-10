@@ -10,7 +10,7 @@ export const handleButtonColor = (name: string): string => {
 
 export const handleButtonImage = (name: string): string => {
   if (name === "MetaMask") {
-    return "/metaMask.svg";
+    return "/metamask.svg";
   } else if (name === "WalletConnect") {
     return "/walletConnect.svg";
   } else {
