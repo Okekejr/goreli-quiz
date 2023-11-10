@@ -10,24 +10,30 @@ import {
   Typography,
 } from "@mui/material";
 import Image from "next/image";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import { OverviewSection } from "../overview";
 import SurveySubmitButton from "@/ui/core/submitButton";
 import { QUIZ_TOKEN_ABI, QUIZ_TOKEN_ADDRESS } from "@/config/contract";
+import { useTriviaQuestions } from "@/hooks/triviaQuestion";
 
 interface myLoaderProps {
   src: string;
 }
 
 export const TriviaQuestions: FC = () => {
+  const {
+    currentQuestionIndex,
+    setCurrentQuestionIndex,
+    setShowOverviewButton,
+    setUserResponses,
+    userResponses,
+    setSuccessMessage,
+    showOverviewButton,
+    successMessage,
+  } = useTriviaQuestions();
+
   const questions = surveyQuestions.questions;
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const currentQuestion = questions[currentQuestionIndex];
-  const [userResponses, setUserResponses] = useState<{ [key: string]: string }>(
-    {}
-  );
-  const [showOverviewButton, setShowOverviewButton] = useState(false);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   // function to set the 'src' to be used in the nextjs Image component
   const myLoader = ({ src }: myLoaderProps) => {
@@ -71,7 +77,6 @@ export const TriviaQuestions: FC = () => {
   };
 
   const showOverview = () => {
-    console.log("User Responses:", userResponses);
     if (Object.keys(userResponses).length === 0) {
       // If no responses, show "Restart" button
       handleRestart();
@@ -94,7 +99,7 @@ export const TriviaQuestions: FC = () => {
           <OverviewSection userResponses={userResponses} />
         </Box>
       ) : (
-        <Box display="flex" flexDirection="column" width="fit-content" gap={4} >
+        <Box display="flex" flexDirection="column" width="fit-content" gap={4}>
           <FormControl>
             <Image
               loader={myLoader}

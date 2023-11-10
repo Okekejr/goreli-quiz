@@ -2,6 +2,10 @@ import { useContractWrite } from "wagmi";
 import { useEffect, useState } from "react";
 import { Alert, Button, Snackbar } from "@mui/material";
 import { surveyQuestions } from "@/util/survey-sample";
+import {
+  generateUniqueIdentifier,
+  generateUniqueIdentifiers,
+} from "./generateUniqueId";
 
 interface SurveySubmitButtonProps {
   contractAddress: `0x${string}` | undefined;
@@ -27,7 +31,7 @@ const SurveySubmitButton: React.FC<SurveySubmitButtonProps> = ({
 
   useEffect(() => {
     if (isSuccess) {
-      // Handle success, e.g., show a success message
+      // Handle success. show a success message
       onSubmissionSuccess();
     }
   }, [isSuccess, onSubmissionSuccess]);
@@ -54,36 +58,6 @@ const SurveySubmitButton: React.FC<SurveySubmitButtonProps> = ({
   const handleRestart = () => {
     // Reload the page
     location.reload();
-  };
-
-  // Function to generate a random uint256 identifier
-  const generateUniqueIdentifier = () => {
-    const maxValue = BigInt(
-      "115792089237316195423570985008687907853269984665640564039457584007913129639935"
-    ); // 2^256 - 1
-    const randomValue = BigInt(
-      Math.floor(Number.MAX_SAFE_INTEGER * Math.random())
-    );
-    const combinedValue = (randomValue % (maxValue - BigInt(1))) + BigInt(1);
-
-    return combinedValue.toString();
-  };
-
-  const generateUniqueIdentifiers = (texts: string[]) => {
-    const maxValue = BigInt(
-      "115792089237316195423570985008687907853269984665640564039457584007913129639935"
-    ); // 2^256 - 1
-
-    const uniqueIdentifiers = texts.map((text) => {
-      const randomValue = BigInt(
-        Math.floor(Number.MAX_SAFE_INTEGER * Math.random())
-      );
-      const combinedValue = (randomValue % (maxValue - BigInt(1))) + BigInt(1);
-
-      return BigInt(combinedValue);
-    });
-
-    return uniqueIdentifiers;
   };
 
   return (

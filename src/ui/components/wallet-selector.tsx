@@ -1,20 +1,16 @@
 import { Alert, Button, Snackbar, Stack, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useConnect } from "wagmi";
 import { MyButton, WalletButton } from "../core/button";
 import { ModalSelectWallet } from "../core/modal";
 import { handleButtonColor, handleButtonImage } from "@/util/handle-wallet";
 import Image from "next/image";
+import { useWalletSelector } from "@/hooks/wallectSelector";
 
 export const WalletSelector = () => {
   const { connect, connectors, error, isLoading } = useConnect();
-
-  const [open, setOpen] = useState(false);
-  const [modal, setModal] = useState(false);
-  const handleOpen = () => setModal(true);
-  const handleClose = () => setModal(false);
-
-  const onClose = () => setOpen(false);
+  const { setOpen, handleClose, handleOpen, modal, open, onClose } =
+    useWalletSelector();
 
   useEffect(() => {
     !error ? setOpen(false) : setOpen(true);
