@@ -2,7 +2,7 @@ import theme from "@/theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import type { AppProps } from "next/app";
 import { WagmiConfig, createConfig, configureChains } from "wagmi";
-import { mainnet, goerli } from "wagmi/chains";
+import { goerli } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
