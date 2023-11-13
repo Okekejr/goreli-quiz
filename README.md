@@ -16,7 +16,6 @@
 - Typescript
 - [Wagmi React Hooks for Ethereum](https://wagmi.sh/)
 - [MaterialUI](https://mui.com/)
-- [themoviedb API](https://developer.themoviedb.org/reference/intro/getting-started).
 - [$QuizTokenAddress](https://goerli.etherscan.io/address/0x437ef217203452317c3c955cf282b1ee5f6aaf72)
 - [SomeFreeETHGereliFaucet](https://goerlifaucet.com/) - To test
 
