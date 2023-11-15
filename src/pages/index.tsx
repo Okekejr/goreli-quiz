@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Box, Container } from "@mui/material";
+import { Alert, Box, Container, Snackbar } from "@mui/material";
 import { Navbar } from "@/ui/navbar";
 import { HomePage } from "@/ui/homepage";
 import { useAccount, useNetwork } from "wagmi";
@@ -42,6 +42,15 @@ export default function Home() {
 
           {showQuestionsPage && <TriviaQuestions />}
         </Box>
+
+        {isConnected && (
+          <Snackbar open={chain?.id !== 5}>
+            <Alert severity="error" sx={{ width: "100%" }}>
+              Wrong network!!! Pls change network automaatically by clicking on
+              profile, and clicking the wrong network button.
+            </Alert>
+          </Snackbar>
+        )}
       </Container>
     </>
   );
